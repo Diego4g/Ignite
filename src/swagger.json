@@ -1,0 +1,117 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "User register documantation",
+        "description": "This is an API Register",
+        "version": "1.0.0",
+        "contact": {
+            "email": "diegodejesusferreira8@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create a new user",
+                "description": "Create a new user",
+                "requestBody": {
+                    "required": "true",
+                    "description": "Required fields for user creation",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "User name sample",
+                                    "email": "usernamesample@example.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User created successfully"
+                    },
+                    "400": {
+                        "description": "This email is already being used!"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List all users",
+                "description": "Only admin user can access",
+                "responses": {
+                    "200": {
+                        "description": "Operation performed successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "User without permission or user not found"
+                    }
+                }
+            }
+        },
+        "/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List user by id",
+                "description": "List user by id",
+                "responses": {
+                    "200": {
+                        "description": "Operation performed successfully"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "user/{user_id}/admin": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Turn user an Admin",
+                "description": "Turn user an Admin",
+                "responses": {
+                    "200": {
+                        "description": "Operation performed successfully"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        }
+    }
+}
