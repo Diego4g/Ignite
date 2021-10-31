@@ -1,5 +1,5 @@
-import { Category } from "../entities/Category"
-import { ICategoriesRepository, ICreateCategoryDTO } from "./implementations/ICategoriesRepository"
+import { Category } from "../../entities/Category"
+import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository"
 
 // DTO => Data transfer object
 
