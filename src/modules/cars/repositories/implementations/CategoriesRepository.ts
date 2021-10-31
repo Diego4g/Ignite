@@ -4,7 +4,7 @@ import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesReposit
 // DTO => Data transfer object
 
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository{
 
     private categories: Category[];
     private static INSTANCE: CategoriesRepository;
