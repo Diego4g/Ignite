@@ -40,20 +40,21 @@ Para esse desafio, temos os seguintes testes:
     O usuário deve ter as seguintes propriedades:
     
 
-```json
+```
 {
+
 	id: string;
 
-  name: string;
+  	name: string;
 
-  admin: boolean;
+  	admin: boolean;
 
-  email: string;
+  	email: string;
 
-  created_at: Date;
+  	created_at: Date;
 
-  updated_at: Date;
-}
+  	updated_at: Date;
+} 
 ```
 
 Lembre que a propriedade `admin` deve sempre ser iniciada como `false` e o `id` deve ser um `uuid` gerado automaticamente.
