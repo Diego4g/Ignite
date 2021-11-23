@@ -2,7 +2,7 @@ import "reflect-metadata"
 import express, { NextFunction, Request, Response } from 'express';
 import "express-async-errors"
 import swaggerUi from "swagger-ui-express";
-
+import "@shared/container"
 import "@shared/infra/typeorm";
 
 import { AppError } from '@shared/errors/AppError';
