@@ -21,13 +21,14 @@ export class CreateRentals1638053328260 implements MigrationInterface {
                         type: "uuid",
                     },
                     {
-                        name: "start_data",
+                        name: "start_date",
                         type: "timestamp",
                         default: "now()"
                     },
                     {
                         name: "end_date",
-                        type: "timestamp"
+                        type: "timestamp",
+                        isNullable: true
                     },
                     {
                         name: "expected_return_date",
@@ -35,7 +36,8 @@ export class CreateRentals1638053328260 implements MigrationInterface {
                     },
                     {
                         name: "total",
-                        type: "numeric"
+                        type: "numeric",
+                        isNullable: true
                     },
                     {
                         name: "created_at",
