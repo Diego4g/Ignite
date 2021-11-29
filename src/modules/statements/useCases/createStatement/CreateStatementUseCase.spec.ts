@@ -45,13 +45,11 @@ describe("Create Statement", () => {
         password: "test231"
       })
 
-      let type = "withdraw" as OperationType;
-
       await createStatementUseCase.execute({
         user_id: user.id,
         amount: 1000,
         description: "test create statement",
-        type: type
+        type: OperationType.WITHDRAW
       })
 
     }).rejects.toBeInstanceOf(AppError)
