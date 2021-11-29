@@ -47,14 +47,12 @@ describe("Create Statement", () => {
 
       let type = "withdraw" as OperationType;
 
-      const statement = await createStatementUseCase.execute({
+      await createStatementUseCase.execute({
         user_id: user.id,
         amount: 1000,
         description: "test create statement",
         type: type
       })
-
-      console.log(statement)
 
     }).rejects.toBeInstanceOf(AppError)
   })
