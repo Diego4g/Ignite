@@ -1,3 +1,4 @@
+import { AppError } from "../../../../shared/errors/AppError";
 import { InMemoryUsersRepository } from "../../../users/repositories/in-memory/InMemoryUsersRepository";
 import { InMemoryStatementsRepository } from "../../repositories/in-memory/InMemoryStatementsRepository";
 import { GetBalanceUseCase } from "./GetBalanceUseCase"
@@ -23,7 +24,7 @@ describe("Get balance", () => {
       password: "123"
     });
 
-    const statement = await inMemoryStatementsRepository.create({
+    await inMemoryStatementsRepository.create({
       user_id: user.id,
       amount: 100,
       description: "deposito de 100 reais",
@@ -33,6 +34,15 @@ describe("Get balance", () => {
     const getBalance = await getBalanceUseCase.execute({ user_id: user.id })
 
     expect(getBalance.statement.length).toBe(1)
+  })
+
+  it("should not be able show a balance of user not existing", () => {
+
+    expect(async () => {
+
+      await getBalanceUseCase.execute({ user_id: "123" })
+
+    }).rejects.toBeInstanceOf(AppError)
 
   })
 })
