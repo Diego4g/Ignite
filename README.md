@@ -68,3 +68,10 @@
 - caso haja multa, deverá ser somado ao total do alugel.
 - O usuário deve estar logado na aplicação.
 
+## Listagem de alugueis para usuário
+
+### Requisitos Funcionais
+- Deve ser possível realizar a busca de todos os alugueis para o usuário
+
+### Regra de negócio
+- O usuário deve estar logado na aplicação
