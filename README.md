@@ -75,3 +75,14 @@
 
 ### Regra de negócio
 - O usuário deve estar logado na aplicação
+
+## Recuperar senha
+
+### Requisitos Funcionais
+- Deve ser possível o usuário recuperar a senha informando o e-mail
+- O usuário deve receber um e-mail com o passo a passo para a recuperação da senha
+- O usuário deve onseguir inserir ma nova senha
+
+### Regra de negócio
+- O usuário precisa informar uma nova senha
+- O link enviado para a recuperação deve expirar em 3 horas

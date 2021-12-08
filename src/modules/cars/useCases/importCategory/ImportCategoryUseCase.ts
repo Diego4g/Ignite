@@ -1,8 +1,7 @@
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 import csvParse from "csv-parse";
 import fs from "fs";
 import { inject, injectable } from "tsyringe";
-import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
-
 
 interface IImportCategory {
     name: string;
@@ -11,12 +10,10 @@ interface IImportCategory {
 
 @injectable()
 class ImportCategoryUseCase {
-
-
     constructor(
         @inject("CategoriesRepository")
-        private categoriesRepository: ICategoriesRepository) { }
-
+        private categoriesRepository: ICategoriesRepository
+    ) {}
 
     loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
         return new Promise((resolve, reject) => {
@@ -32,7 +29,7 @@ class ImportCategoryUseCase {
                     const [name, description] = line;
                     categories.push({
                         name,
-                        description
+                        description,
                     });
                 })
                 .on("end", () => {
@@ -41,17 +38,18 @@ class ImportCategoryUseCase {
                 })
                 .on("error", (err) => {
                     reject(err);
-                })
-        })
+                });
+        });
     }
     async execute(file: Express.Multer.File): Promise<void> {
-
         const categories = await this.loadCategories(file);
 
         categories.map(async (category) => {
             const { name, description } = category;
 
-            const existCategory = await this.categoriesRepository.findByName(name);
+            const existCategory = await this.categoriesRepository.findByName(
+                name
+            );
 
             if (!existCategory) {
                 await this.categoriesRepository.create({
@@ -59,8 +57,8 @@ class ImportCategoryUseCase {
                     description,
                 });
             }
-        })
+        });
     }
 }
 
-export { ImportCategoryUseCase }
+export { ImportCategoryUseCase };

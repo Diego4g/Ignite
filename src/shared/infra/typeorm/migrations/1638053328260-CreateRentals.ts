@@ -1,7 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateRentals1638053328260 implements MigrationInterface {
-
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -10,11 +9,11 @@ export class CreateRentals1638053328260 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
-                        isPrimary: true
+                        isPrimary: true,
                     },
                     {
                         name: "car_id",
-                        type: "uuid"
+                        type: "uuid",
                     },
                     {
                         name: "user_id",
@@ -23,12 +22,12 @@ export class CreateRentals1638053328260 implements MigrationInterface {
                     {
                         name: "start_date",
                         type: "timestamp",
-                        default: "now()"
+                        default: "now()",
                     },
                     {
                         name: "end_date",
                         type: "timestamp",
-                        isNullable: true
+                        isNullable: true,
                     },
                     {
                         name: "expected_return_date",
@@ -37,18 +36,18 @@ export class CreateRentals1638053328260 implements MigrationInterface {
                     {
                         name: "total",
                         type: "numeric",
-                        isNullable: true
+                        isNullable: true,
                     },
                     {
                         name: "created_at",
                         type: "timestamp",
-                        default: "now()"
+                        default: "now()",
                     },
                     {
                         name: "updated_at",
                         type: "timestamp",
-                        default: "now()"
-                    }
+                        default: "now()",
+                    },
                 ],
                 foreignKeys: [
                     {
@@ -57,7 +56,7 @@ export class CreateRentals1638053328260 implements MigrationInterface {
                         referencedColumnNames: ["id"],
                         columnNames: ["car_id"],
                         onDelete: "SET NULL",
-                        onUpdate: "SET NULL"
+                        onUpdate: "SET NULL",
                     },
                     {
                         name: "FKUserRental",
@@ -65,15 +64,14 @@ export class CreateRentals1638053328260 implements MigrationInterface {
                         referencedColumnNames: ["id"],
                         columnNames: ["user_id"],
                         onDelete: "SET NULL",
-                        onUpdate: "SET NULL"
-                    }
-                ]
+                        onUpdate: "SET NULL",
+                    },
+                ],
             })
-        )
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("rentals");
     }
-
 }

@@ -1,7 +1,13 @@
-import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
+import {
+    MigrationInterface,
+    QueryRunner,
+    Table,
+    TableForeignKey,
+} from "typeorm";
 
-export class CreateSpecificationsCars1637721413083 implements MigrationInterface {
-
+export class CreateSpecificationsCars1637721413083
+    implements MigrationInterface
+{
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -18,10 +24,9 @@ export class CreateSpecificationsCars1637721413083 implements MigrationInterface
                     {
                         name: "created_at",
                         type: "timestamp",
-                        default: "now()"
-                    }
-                ]
-
+                        default: "now()",
+                    },
+                ],
             })
         );
 
@@ -33,9 +38,9 @@ export class CreateSpecificationsCars1637721413083 implements MigrationInterface
                 referencedColumnNames: ["id"],
                 columnNames: ["specification_id"],
                 onDelete: "SET NULL",
-                onUpdate: "SET NULL"
+                onUpdate: "SET NULL",
             })
-        )
+        );
 
         await queryRunner.createForeignKey(
             "specifications_cars",
@@ -45,22 +50,22 @@ export class CreateSpecificationsCars1637721413083 implements MigrationInterface
                 referencedColumnNames: ["id"],
                 columnNames: ["car_id"],
                 onDelete: "SET NULL",
-                onUpdate: "SET NULL"
+                onUpdate: "SET NULL",
             })
-        )
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-
         await queryRunner.dropForeignKey(
-            "specifications_cars", "FKCarSpecification"
+            "specifications_cars",
+            "FKCarSpecification"
         );
 
         await queryRunner.dropForeignKey(
-            "specifications_cars", "FKSpecificationCar"
+            "specifications_cars",
+            "FKSpecificationCar"
         );
 
-        await queryRunner.dropTable("specifications_cars")
+        await queryRunner.dropTable("specifications_cars");
     }
-
 }

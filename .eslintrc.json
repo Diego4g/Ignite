@@ -1,6 +1,6 @@
 {
     "env": {
-        "es2021": true,
+        "es2020": true,
         "node": true,
         "jest": true
     },
@@ -12,7 +12,7 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 13,
+        "ecmaVersion": 12,
         "sourceType": "module"
     },
     "plugins": [
@@ -21,6 +21,7 @@
         "prettier"
     ],
     "rules": {
+        "prettier/prettier": "error",
         "camelcase": "off",
         "import/no-unresolved": "error",
         "@typescript-eslint/naming-convention": [
@@ -82,6 +83,5 @@
         "import/resolver": {
             "typescript": {}
         }
-    },
-    "prettier/prettier": "error"
+    }
 }
