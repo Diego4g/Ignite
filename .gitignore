@@ -6,3 +6,4 @@ arquivo.csv
 arquivo2.csv
 tmp
 .env
+coverage
