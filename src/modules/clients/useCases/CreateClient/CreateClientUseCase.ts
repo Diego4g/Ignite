@@ -1,5 +1,5 @@
 import { prisma } from "../../../../database/prismaClient";
-import { hash } from "bcrypt"
+import { hash } from "bcrypt";
 
 
 interface ICreateClient {
