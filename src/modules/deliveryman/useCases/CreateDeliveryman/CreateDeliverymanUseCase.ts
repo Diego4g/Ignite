@@ -13,9 +13,10 @@ export class CreateDeliverymanUseCase {
         const deliverymanExists = await prisma.deliveryman.findFirst({
             where: {
                 username: {
-                    mode: "insensitive" //ignora se tem maiusculo ou minusculo
-                }
-            }
+                    equals: username,
+                    mode: "insensitive", //ignora se tem maiusculo ou minusculo
+                },
+            },
         })
 
         if (deliverymanExists) {

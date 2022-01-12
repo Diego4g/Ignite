@@ -14,9 +14,10 @@ export class CreateClientUseCase {
         const clientExists = await prisma.clients.findFirst({
             where: {
                 username: {
-                    mode: "insensitive" //ignora se tem maiusculo ou minusculo
-                }
-            }
+                    equals: username,
+                    mode: "insensitive", //ignora se tem maiusculo ou minusculo
+                },
+            },
         })
 
         if (clientExists) {
