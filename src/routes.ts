@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AuthenticateClientController } from "./modules/account/authenticateClient/AuthenticateClientController";
 import { AuthenticateDeliverymanController } from "./modules/account/authenticateDeliveryman/AuthenticateDeliverymanController";
 import { CreateClientController } from "./modules/clients/useCases/CreateClient/CreateClientController";
+import { CreateDeliveryController } from "./modules/deliveries/useCases/CreateDelivery/CreateDeliveryController";
 import { CreateDeliverymanController } from "./modules/deliveryman/useCases/CreateDeliveryman/CreateDeliverymanController";
 
 
@@ -11,11 +12,14 @@ const createClientController = new CreateClientController();
 const authenticateClientController = new AuthenticateClientController();
 const createDeliverymanController = new CreateDeliverymanController();
 const authenticateDeliverymanController = new AuthenticateDeliverymanController();
+const createDeliveryController = new CreateDeliveryController();
 
 routes.post("/client/authenticate", authenticateClientController.handle);
 routes.post("/deliveryman/authenticate", authenticateDeliverymanController.handle);
+
 routes.post("/client/", createClientController.handle);
 routes.post("/deliveryman", createDeliverymanController.handle);
 
+routes.post("/delivery", createDeliveryController.handle);
 
 export { routes }
