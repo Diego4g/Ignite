@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import auth from "@config/auth";
 import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
 import { verify, sign } from "jsonwebtoken";
@@ -11,6 +12,11 @@ interface IPayload {
     email: string;
 }
 
+interface ITokenResponse {
+    token: string;
+    refresh_token: string;
+}
+
 @injectable()
 class RefreshTokenUseCase {
     constructor(
@@ -18,9 +24,9 @@ class RefreshTokenUseCase {
         private usersTokensRepository: IUsersTokensRepository,
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider
-    ) {}
+    ) { }
 
-    async execute(token: string): Promise<string> {
+    async execute(token: string): Promise<ITokenResponse> {
         const { email, sub } = verify(
             token,
             auth.secret_refresh_token
@@ -54,7 +60,13 @@ class RefreshTokenUseCase {
             refresh_token,
             user_id,
         });
-        return refresh_token;
+
+        const newToken = sign({}, auth.secret_token, {
+            subject: user_id,
+            expiresIn: auth.expires_in_token,
+        });
+
+        return { refresh_token, token: newToken };
     }
 }
 
