@@ -7,3 +7,4 @@ arquivo2.csv
 tmp
 .env
 coverage
+dist
