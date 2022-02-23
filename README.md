@@ -22,14 +22,12 @@ Esta é uma aplicação frontend que consiste em armazenar informações de gast
 ```sh 
 git clone git@github.com:Diego4g/dtmoney.git && cd dtmoney
 ```
-#### Instalando as dependências e rodando o projeto
+#### Instalando as dependências e executando projeto
 ```sh 
 yarn
 
 yarn start
 ```
-
-
 ## 👀 Demonstração
 
 <p align="center">
