@@ -1,0 +1,12 @@
+node_modules
+.vscode
+Anotações.txt
+diagrama.png
+arquivo.csv
+arquivo2.csv
+tmp/*
+.env
+coverage
+dist
+!tmp/.gitkeep
+ormconfig.json
